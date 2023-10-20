@@ -18,7 +18,9 @@ import org.springframework.web.client.RestTemplate;
 public class NumericController {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
-	private static final String baseURL = "http://node-service:5000/plusone";
+	private static final String baseURL = "http://localhost:8080";
+	// private static final String baseURL = "http://node-service:5000/plusone";
+	//private static final String baseURL = "http://localhost:5000/plusone";
 	
 	RestTemplate restTemplate = new RestTemplate();
 	
@@ -27,7 +29,7 @@ public class NumericController {
 
 		@GetMapping("/")
 		public String welcome() {
-			return "Kubernetes DevSecOps";
+			return "Enjoy Your Learning";
 		}
 
 		@GetMapping("/compare/{value}")
