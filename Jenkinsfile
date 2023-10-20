@@ -8,7 +8,6 @@ pipeline {
               archive 'target/*.jar' //update the content
             }
   }   
-    stages {
       stage('Docker Build and Push') {
             steps {
               sh 'printenv'
