@@ -1,6 +1,5 @@
 pipeline {
   agent any
-
   stages {
     stage('Build Artifact') {
       steps {
@@ -20,6 +19,17 @@ pipeline {
             sh "docker build -t ${dockerImageName} ."
             sh "docker push ${dockerImageName}"
           }
+        }
+      }
+    }
+
+    stage('Kubernetes Deployment - DEV') {
+      steps {
+        withKubeConfig([credentialsId: 'kubeconfig']) {
+          sh "cp k8s_deployment_service.yaml k8s_deployment_service_temp.yaml"
+          sh "sed -i 's#replace#siddharth67/numeric-app:${GIT_COMMIT}#g' k8s_deployment_service_temp.yaml"
+          sh "kubectl apply -f k8s_deployment_service_temp.yaml"
+          sh "rm k8s_deployment_service_temp.yaml"
         }
       }
     }
