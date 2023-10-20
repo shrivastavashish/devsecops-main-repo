@@ -16,9 +16,9 @@ pipeline {
           sh 'docker push dsocouncil/node-service:""$GIT_COMMIT""'
               
                }
-            }
         }
+      }
     }
-
-
+  }
+}
     
