@@ -2,19 +2,26 @@ pipeline {
   agent any
 
   stages {
-      stage('Build Artifact') {
-            steps {
-              sh "mvn clean package -DskipTests=true"
-              archive 'target/*.jar' //update the content
-            }
-  }   
-      stage('Docker Build and Push') {
+    stage('Build Artifact') {
       steps {
-          sh 'printenv'
-          sh 'docker build -t dsocouncil/node-service:""$GIT_COMMIT"" .'
-          sh 'docker push dsocouncil/node-service:""$GIT_COMMIT""'
-              
-               }
+        sh "mvn clean package -DskipTests=true"
+        archiveArtifacts artifacts: 'target/*.jar', onlyIfSuccessful: true
+      }
+    }
+
+    stage('Docker Build and Push') {
+      steps {
+        script {
+          // Define the Docker image name with the GIT_COMMIT as the tag
+          def dockerImageName = "dsocouncil/node-service:${env.GIT_COMMIT}"
+
+          // Authenticate with Docker Hub and push the image
+          withDockerRegistry(credentialsId: "docker-hub", url: "https://index.docker.io/v1/") {
+            sh "docker build -t ${dockerImageName} ."
+            sh "docker push ${dockerImageName}"
+          }
         }
       }
     }
+  }
+}
