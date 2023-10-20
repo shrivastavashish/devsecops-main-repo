@@ -12,8 +12,8 @@ pipeline {
       stage('Docker Build and Push') {
             steps {
               sh 'printenv'
-              sh 'docker build -t dsocouncil/node-service:""$GIT_COMMIT .'
-              sh 'docker push -t dsocouncil/node-service:""$GIT_COMMIT
+              sh 'docker build -t dsocouncil/node-service:""$GIT_COMMI""T"" .'
+              sh 'docker push -t dsocouncil/node-service:""$GIT_COMMIT""'
               
                }
             }
