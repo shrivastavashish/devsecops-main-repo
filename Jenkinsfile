@@ -10,7 +10,6 @@ pipeline {
   }   
       stage('Docker Build and Push') {
       steps {
-        withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
           sh 'printenv'
           sh 'docker build -t dsocouncil/node-service:""$GIT_COMMIT"" .'
           sh 'docker push dsocouncil/node-service:""$GIT_COMMIT""'
