@@ -9,12 +9,16 @@ pipeline {
             }
   }   
       stage('Docker Build and Push') {
-            steps {
-              sh 'printenv'
-              sh "docker push dsocouncil/node-service:${env.GIT_COMMIT}"
-              sh 'docker push -t dsocouncil/node-service:""$GIT_COMMIT""'
+      steps {
+        withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+          sh 'printenv'
+          sh 'docker build -t dsocouncil/node-service:""$GIT_COMMIT"" .'
+          sh 'docker push dsocouncil/node-service:""$GIT_COMMIT""'
               
                }
             }
         }
     }
+
+
+    
