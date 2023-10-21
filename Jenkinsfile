@@ -29,7 +29,7 @@ pipeline {
           sh "cp k8s_deployment_service.yaml k8s_deployment_service_temp.yaml"
           sh "sed -i 's#replace#dsocouncil/node-service:${GIT_COMMIT}#g' k8s_deployment_service_temp.yaml"
           sh "kubectl apply -f k8s_deployment_service_temp.yaml"
-          sh "rm k8s_deployment_service_temp.yaml"
+          sh "rm k8s_deployment_service_temp.yaml" // test
         }
       }
     }
