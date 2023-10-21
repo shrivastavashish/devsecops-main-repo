@@ -6,7 +6,7 @@
             "value": "eastus"
         },
         "networkInterfaceName": {
-            "value": "devsecops-cloud801"
+            "value": "devsecops-cloud2110"
         },
         "enableAcceleratedNetworking": {
             "value": true
