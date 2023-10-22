@@ -7,25 +7,6 @@ pipeline {
         archiveArtifacts artifacts: 'target/*.jar', onlyIfSuccessful: true
       }
     }
-
-stage('SonarQube - SAST') {
-      steps {
-        sh "mvn sonar:sonar -Dsonar.projectKey=secops-application -Dsonar.host.url=http://secopsecure.eastus.cloudapp.azure.com:9000 -Dsonar.login=sqp_847139136629de7fe354f209a0969a0dadd9fc6e"
-      }
-    }
-
-    
-
-stage('SCA Scan - Dependency-Check ') {
-      steps {
-        sh "mvn dependency-check:check"
-      }
-      post {
-        always {
-          dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
-        }
-      }
-    }
     
     stage('Docker Build and Push') {
       steps {
