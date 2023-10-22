@@ -1,0 +1,61 @@
+Assignment - 1
+Primary Skill: Git
+Sub-Skills:
+
+
+Installation and Configuration of Git
+Working with git Remote / hosting providers 
+Git Workflow
+
+
+Case Study:
+Gunther, the proud owner of the Central - Perk Café is now happy that he is able to track his recipe files using git as a version control.  
+ 
+With the increased efficiency that git provided him, he is able to focus more on his recipes and managing his customers better at his Café. He is even considering opening new branches of his Café with Rachel as partners.  
+ 
+Gunther and Rachel could together work on new interesting recipes to continue impressing their customers. They could all pick and choose their respective branch menus from a central collection of recipes that they would all create together. Additionally, each branch would also have one signature recipe that would be exclusively served at that branch alone. 
+ 
+Now all of this needs a lot of collaboration. And they also need accessibility of the complete work from any of their locations.  
+ 
+However, Gunther is currently struggling with following problems
+Gunther is having to operate from only his Office desktop where his local git repository is present. He wants to move his repository to a central server from where all his friends could collaborate.  
+Gunther wants a structured way to help his friends collaborate to his collection of recipes while still having their own private place to manage their menus and signature recipes. 
+ 
+Create a new GitHub Repository for Gunther’s Café recipes. Push the local repository from Gunther into the Online GitHub repository. 
+
+
+Assume there are 2 new café - branches that Gunther opened. Create a new file for each of the café – branch menus using GitHub interface. 
+ 
+Assume you are one of his partner- friends. Create a new topic branch for yourself. Submit a new_cool_recipe.txt to his collection through a GitHub pull request and trigger a code review process. 
+
+
+Finally ensure there are no merge conflicts and merge your new topic branch to the main branch – everything on GitHub. 
+ 
+
+
+Key Skills:- 
+The intent of this assignment is to give you a thorough practice on the following Git features:
+Creating a new GitHub Repository.
+Setting up a remote and Pushing a local git repository to GitHub.
+Creating, editing files using GitHub interface.
+Cloning a remote repository and making changes.
+Keeping Local and remote repositories in sync.
+Working with GitHub branches.
+Raising a pull request.
+Viewing commit history and commit diffs between files & branches using GitHub.
+Merging branches on GitHub.
+ 
+Task Checklist: 
+Create a GitHub Account.
+Create a new GitHub Repository with the name “Gunther_gitcafe”.
+Configure remote for the local git repository gitCafe and push the changes to “Gunther_gitcafe” on GitHub.
+Commit a new file café_branch1_menu.md file at the root of the local git repository with title “Gunther’s café - branch1 menu” and Push the file to GitHub.
+Using the GitHub interface, commit another new file café_branch2_menu.md file at the root of the local git repository with title “Gunther’s café – branch2 menu”.
+Create a new branch called “signature_recipes” from the GitHub interface.
+Pull the latest changes to the local repository using git pull.
+Add a new file signature_latte.txt into the branch by adding and committing it under the recipes folder.
+Push the new branch and the changes into GitHub repo.
+Raise a pull request from the branch “signature_recipes” to “master”. Include one of your friends as a Code reviewer adding their GH handle (s) as reviewers.
+Have a code review comment provided to modify the Menu file by adding the reference to the new signature_latte into the menu.
+Address the code review comment by including the suggested change and resolving the comment.
+After all the comments are resolved, have the reviewers approve the pull request and finally merge the changes.
