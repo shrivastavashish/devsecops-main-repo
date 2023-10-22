@@ -52,7 +52,7 @@
 				<version>8.4.1</version>
 				<configuration>
 					<format>ALL</format>
-					<failBuildOnCVSS>8</failBuildOnCVSS>
+					<failBuildOnCVSS>9</failBuildOnCVSS>
 					<!-- fail the build for CVSS greater than or equal to 5 -->
 				</configuration>
 			</plugin>

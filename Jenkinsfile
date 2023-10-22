@@ -7,7 +7,7 @@ pipeline {
         archiveArtifacts artifacts: 'target/*.jar', onlyIfSuccessful: true
       }
     }
-    stage('Vulnerability Scan - Docker ') {
+    stage('SCA Scan - Dependency-Check ') {
       steps {
         sh "mvn dependency-check:check"
       }
