@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -46,32 +45,17 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			
+			<!-- Dependency Check Plugin -->
+			<plugin>
+				<groupId>org.owasp</groupId>
+				<artifactId>dependency-check-maven</artifactId>
+				<version>8.4.1</version>
+				<configuration>
+					<format>ALL</format>
+					<failBuildOnCVSS>8</failBuildOnCVSS>
+					<!-- fail the build for CVSS greater than or equal to 5 -->
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-
 </project>
-
-     <!--                   Dependency Check Plugin                   -->
-	<plugin>
-		<groupId>org.owasp</groupId>
-		<artifactId>dependency-check-maven</artifactId>
-		<version>8.4.1</version>
-		<configuration>
-			<format>ALL</format>
-			<failBuildOnCVSS>8</failBuildOnCVSS>
-			<!-- fail the build for CVSS greater than or equal to 5 -->
-			<!-- 
-						use internal mirroring of CVE contents 
-						Suppress files 
-						E.g. a company-wide suppression file and local project file 
-						-->
-			<!-- 
-						<cveUrlModified>http://internal-mirror.mycorp.com/nvdcve-1.1-modified.json.gz</cveUrlModified>  
-										<cveUrlBase>http://internal-mirror.mycorp.com/nvdcve-1.1-%d.json.gz</cveUrlBase>
-						<suppressionFiles>               
-											<suppressionFile>http://example.org/suppression.xml</suppressionFile>
-											<suppressionFile>project-suppression.xml</suppressionFile> 
-										</suppressionFiles> 
-									-->
-		</configuration>
-	</plugin>
