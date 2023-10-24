@@ -11,7 +11,7 @@ pipeline {
     stage('Docker Build and Push') {
       steps {
         script {
-          // Define the Docker image name with the GIT_COMMIT as the tag ok
+          // Define the Docker image name with the GIT_COMMIT as the tag
           def dockerImageName = "dsocouncil/node-service:${env.GIT_COMMIT}"
 
           // Authenticate with Docker Hub and push the image
