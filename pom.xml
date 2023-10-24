@@ -52,8 +52,8 @@
 				<version>8.4.2</version>
 				<configuration>
 					<format>ALL</format>
-					<failBuildOnCVSS>10</failBuildOnCVSS>
-					<!-- fail the build for CVSS greater than or equal to 10 -->
+					<failBuildOnCVSS>6</failBuildOnCVSS>
+					<!-- fail the build for CVSS greater than or equal to 6 -->
 				</configuration>
 			</plugin>
 		</plugins>
