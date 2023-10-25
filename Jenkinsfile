@@ -73,7 +73,7 @@ pipeline {
             dir(dockerBuildContext) {
                 withDockerRegistry(credentialsId: "dockerhub", url: "https://index.docker.io/v1/") {
                     sh "sudo docker build -t ${dockerImageName} ."
-                    sh "sudo docker push ${dockerImageName}"
+                    sh "docker push ${dockerImageName}"
                 }
             }
         }
