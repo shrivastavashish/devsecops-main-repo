@@ -65,25 +65,29 @@ pipeline {
 
         stage('Docker Build and Push') {
             steps {
-             withDockerRegistry(credentialsId: "dockerhub", url: "") {
-                sh 'printenv'
-                sh 'sudo docker build -t dsocouncil/node-service:""$GIT_COMMIT"" .'
-                sh 'docker push dsocouncil/node-service:""$GIT_COMMIT""'
+                script {
+                    def dockerImageName = "dsocouncil/node-service:${env.GIT_COMMIT}"
+                    dockerImage.inside {
+                    withDockerRegistry(credentialsId: "dockerhub", url: "https://index.docker.io/v1/") {
+                        sh "docker build -t ${dockerImageName} ."
+                        sh "docker push ${dockerImageName}"
                     }
                 }
             }
         }
 
-    //     stage('Kubernetes Deployment - DEV') {
-    //         steps {
-    //             script {
-    //                 withKubeConfig([credentialsId: 'kubeconfig']) {
-    //                     sh "cp k8s_deployment_service.yaml k8s_deployment_service_temp.yaml"
-    //                     sh "sed -i 's#replace#dsocouncil/node-service:${GIT_COMMIT}#g' k8s_deployment_service_temp.yaml"
-    //                     sh "kubectl apply -f k8s_deployment_service_temp.yaml"
-    //                     sh "rm k8s_deployment_service_temp.yaml"
-    //                 }
-    //             }
-    //         }
-    //     }
-   }
+        stage('Kubernetes Deployment - DEV') {
+            steps {
+                script {
+                    withKubeConfig([credentialsId: 'kubeconfig']) {
+                        sh "cp k8s_deployment_service.yaml k8s_deployment_service_temp.yaml"
+                        sh "sed -i 's#replace#dsocouncil/node-service:${GIT_COMMIT}#g' k8s_deployment_service_temp.yaml"
+                        sh "kubectl apply -f k8s_deployment_service_temp.yaml"
+                        sh "rm k8s_deployment_service_temp.yaml"
+                    }
+                }
+            }
+        }
+    }
+}
+}
