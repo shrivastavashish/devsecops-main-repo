@@ -35,7 +35,7 @@ if ! docker info > /dev/null 2>&1; then
 fi
 
 # Define the Docker image name
-dockerImageName="dsocouncil/node-service:latest"  # Replace with the correct image name and tag
+dockerImageName="dsocouncil/node-service:b9b977a211d98b6389b8ea752c921c6729215adc"  # Replace with the correct image name and tag
 
 # Pull the Docker image (if not already available locally)
 docker pull $dockerImageName
