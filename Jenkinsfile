@@ -58,8 +58,8 @@ pipeline {
             steps {
                 script {
                     // Run Trivy for vulnerability scanning
-                    sh "/Users/ashish/Documents/GitHub/devsecops-main-repo/trivy-scan.sh"
-                }
+                    sh 'trivy-scan.sh'
+                } 
             }
         }
 
