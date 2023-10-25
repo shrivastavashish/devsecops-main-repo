@@ -1,6 +1,9 @@
 #!/bin/bash
 
-dockerImageName=$(awk 'NR==1 {print $2}' Dockerfile)
+# dockerImageName=$(awk 'NR==1 {print $2}' Dockerfile)
+# echo $dockerImageName
+
+dockerImageName=openjdk:8-jdk-alpine
 echo $dockerImageName
 
 docker run --rm -v $WORKSPACE:/root/.cache/ aquasec/trivy:0.46.0 -q image --exit-code 0 --severity HIGH --light $dockerImageName
