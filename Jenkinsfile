@@ -67,7 +67,7 @@ pipeline {
     steps {
         script {
             def dockerImageName = "dsocouncil/node-service:${env.GIT_COMMIT}"
-            def dockerBuildContext = "/path/to/your/docker/project"  // Replace with the correct path
+            def dockerBuildContext = "/Users/ashish/Documents/GitHub/devsecops-main-repo/Dockerfile"  // Replace with the correct path
 
             // Navigate to the project directory for building
             dir(dockerBuildContext) {
