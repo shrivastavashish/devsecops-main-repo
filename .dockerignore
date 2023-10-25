@@ -1,1 +1,4 @@
 trivy/
+other-excluded-directory/
+.git/
+.vscode/
