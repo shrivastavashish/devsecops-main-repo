@@ -43,7 +43,7 @@ pipeline {
                 script {
                     // Configure Snyk code scanning
                     withEnv(["SNYK_TOKEN=56355cf5-fcf9-4a2a-91d6-50057a2e8038"]) {
-                        sh 'snyk test --devsecops-main-repo'
+                        sh 'snyk test --all-projects'
                     }
                 }
             }
