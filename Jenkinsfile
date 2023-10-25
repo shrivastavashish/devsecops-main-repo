@@ -27,17 +27,23 @@ pipeline {
 
         stage('SCA Scan - Dependency-Check') {
             steps {
-             parallel
                 script {
+                    // Run Dependency-Check for SCA scan
                     sh "mvn dependency-check:check"
-                }
-                script { 
-                    sh "bash trivy-image-scan.sh"
                 }
             }
             post {
                 always {
                     dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
+                }
+            }
+        }
+
+        stage('Trivy Scan') {
+            steps {
+                script {
+                    // Run Trivy for vulnerability scanning
+                    sh "bash trivy-image-scan.sh"
                 }
             }
         }
