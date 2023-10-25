@@ -18,8 +18,6 @@
 #         echo "Image scanning passed. No CRITICAL vulnerabilities found"
 #     fi;
 
-#     #!/bin/bash
-
 #!/bin/bash
 
 # Check if the Docker daemon is running
@@ -31,8 +29,9 @@ fi
 # Define the Docker image name
 dockerImageName="dsocouncil/node-service"
 
-# Run Trivy to scan the Docker image
-docker run --rm -v $WORKSPACE:/root/.cache/ aquasec/trivy:0.46.0 -q image --exit-code 0 --severity HIGH --light $dockerImageName
+# Run Trivy to scan the Docker image using Docker explicitly
+docker run --rm -v $WORKSPACE:/root/.cache/ aquasec/trivy:0.46.0 -q image --exit-code 0 --severity HIGH --light --input $dockerImageName
+docker run --rm -v $WORKSPACE:/root/.cache/ aquasec/trivy:0.46.0 -q image --exit-code 1 --severity CRITICAL --light $dockerImageName
 
 # Trivy scan result processing
 exit_code=$?
@@ -45,4 +44,5 @@ if [[ "${exit_code}" == 1 ]]; then
 else
     echo "Image scanning passed. No CRITICAL vulnerabilities found"
 fi
+
 
