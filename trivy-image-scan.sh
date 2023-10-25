@@ -20,6 +20,14 @@
 
 #     #!/bin/bash
 
+#!/bin/bash
+
+# Check if the Docker daemon is running
+if ! docker info > /dev/null 2>&1; then
+    echo "Docker daemon is not running. Please start Docker and try again."
+    exit 1
+fi
+
 # Define the Docker image name
 dockerImageName="dsocouncil/node-service"
 
@@ -37,3 +45,4 @@ if [[ "${exit_code}" == 1 ]]; then
 else
     echo "Image scanning passed. No CRITICAL vulnerabilities found"
 fi
+
