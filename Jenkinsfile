@@ -67,7 +67,7 @@ pipeline {
             steps {
              withDockerRegistry(credentialsId: "dockerhub", url: "") {
                 sh 'printenv'
-                sh 'docker build -t dsocouncil/node-service:""$GIT_COMMIT"" .'
+                sh 'sudo docker build -t dsocouncil/node-service:""$GIT_COMMIT"" .'
                 sh 'docker push dsocouncil/node-service:""$GIT_COMMIT""'
                     }
                 }
