@@ -67,7 +67,7 @@ pipeline {
             steps {
                 script {
                     def dockerImageName = "dsocouncil/node-service:${env.GIT_COMMIT}"
-                    dockerImage.inside {
+
                     withDockerRegistry(credentialsId: "dockerhub", url: "https://index.docker.io/v1/") {
                         sh "docker build -t ${dockerImageName} ."
                         sh "docker push ${dockerImageName}"
@@ -89,5 +89,4 @@ pipeline {
             }
         }
     }
-}
 }
