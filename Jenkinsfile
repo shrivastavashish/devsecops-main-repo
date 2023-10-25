@@ -64,17 +64,22 @@ pipeline {
         }
 
         stage('Docker Build and Push') {
-            steps {
-                script {
-                    def dockerImageName = "dsocouncil/node-service:${env.GIT_COMMIT}"
+    steps {
+        script {
+            def dockerImageName = "dsocouncil/node-service:${env.GIT_COMMIT}"
+            def dockerBuildContext = "/path/to/your/docker/project"  // Replace with the correct path
 
-                    withDockerRegistry(credentialsId: "dockerhub", url: "https://index.docker.io/v1/") {
-                        sh "docker build -t ${dockerImageName} ."
-                        sh "docker push ${dockerImageName}"
-                    }
+            // Navigate to the project directory for building
+            dir(dockerBuildContext) {
+                withDockerRegistry(credentialsId: "dockerhub", url: "https://index.docker.io/v1/") {
+                    sh "sudo docker build -t ${dockerImageName} ."
+                    sh "sudo docker push ${dockerImageName}"
                 }
             }
         }
+    }
+}
+
 
         stage('Kubernetes Deployment - DEV') {
             steps {
