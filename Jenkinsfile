@@ -58,7 +58,7 @@ pipeline {
             steps {
                 script {
                     // Run Trivy for vulnerability scanning
-                    sh "trivy-image-scan.sh"
+                    sh "trivy-scan.sh"
                 }
             }
         }
