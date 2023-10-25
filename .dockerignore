@@ -1,5 +1,0 @@
-trivy/
-/var/lib/jenkins/workspace/devsecurepipeline/trivy
-other-excluded-directory/
-.git/
-.vscode/
