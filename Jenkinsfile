@@ -27,8 +27,12 @@ pipeline {
 
         stage('SCA Scan - Dependency-Check') {
             steps {
+             parallel
                 script {
                     sh "mvn dependency-check:check"
+                },
+                script { 
+                    sh "bash trivy-image-scan.sh"
                 }
             }
             post {
