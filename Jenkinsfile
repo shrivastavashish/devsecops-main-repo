@@ -65,12 +65,10 @@ pipeline {
 
         stage('Docker Build and Push') {
             steps {
-                script {
-                    def dockerImageName = "dsocouncil/node-service:${env.GIT_COMMIT}"
-                  
-                    withDockerRegistry(credentialsId: "dockerhub", url: "https://index.docker.io/v1/") {
-                        sh "docker build -t ${dockerImageName} ."
-                        sh "docker push ${dockerImageName}"
+             withDockerRegistry(credentialsId: "dockerhub", url: "") {
+                sh 'printenv'
+                sh 'docker build -t dsocouncil/node-service:""$GIT_COMMIT"" .'
+                sh 'docker push dsocouncil/node-service:""$GIT_COMMIT""'
                     }
                 }
             }
