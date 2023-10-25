@@ -28,7 +28,6 @@ pipeline {
         stage('SCA Scan - Dependency-Check') {
             steps {
                 script {
-                    // Run Dependency-Check for SCA scan
                     sh "mvn dependency-check:check"
                 }
             }
@@ -38,20 +37,21 @@ pipeline {
                 }
             }
         }
+
         stage('Snyk Code Scan') {
             steps {
-                echo 'Testing...'
-                snykSecurity(
-                snykInstallation: 'snykdso',
-                snykTokenId: '56355cf5-fcf9-4a2a-91d6-50057a2e8038',
-                // place other parameters here
-                )
+                script {
+                    // Configure Snyk code scanning
+                    withEnv(["SNYK_TOKEN=56355cf5-fcf9-4a2a-91d6-50057a2e8038"]) {
+                        sh 'snyk test --devsecops-main-repo'
+                    }
+                }
             }
-            }
+        }
+
         stage('Trivy Scan') {
             steps {
                 script {
-                    // Run Trivy for vulnerability scanning
                     sh "trivy-image-scan.sh"
                 }
             }
