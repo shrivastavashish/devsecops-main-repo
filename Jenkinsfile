@@ -10,7 +10,7 @@ pipeline {
 
 stage('SonarQube - SAST') {
       steps {
-        sh "mvn sonar:sonar -Dsonar.projectKey=secops-application -Dsonar.host.url=http://opssecdev.eastus.cloudapp.azure.com:9000 -Dsonar.login=sqp_fe345569b7450bf4edf58ff82ce881f10a387f24"
+        sh "mvn sonar:sonar -Dsonar.projectKey=secopsdev-application -Dsonar.host.url=http://opssecdev.eastus.cloudapp.azure.com:9000 -Dsonar.login=sqp_fe345569b7450bf4edf58ff82ce881f10a387f24"
       }
     }
 
