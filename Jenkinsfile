@@ -30,10 +30,22 @@ pipeline {
                 script {
                     sh "mvn dependency-check:check"
                 }
+                post {
+                    always {
+                        dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
+                    }
+                }
             }
-            post {
-                always {
-                    dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
+        }
+
+        stage('Trivy Scan') {
+            steps {
+                script {
+                    // Define the image name based on your Docker image
+                    def dockerImageName = "dsocouncil/node-service:${env.GIT_COMMIT}"
+
+                    // Run Trivy to scan the Docker image
+                    sh "trivy ${dockerImageName}"
                 }
             }
         }
