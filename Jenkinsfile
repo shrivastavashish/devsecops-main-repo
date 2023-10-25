@@ -38,7 +38,16 @@ pipeline {
                 }
             }
         }
-
+        stage('Snyk Code Scan') {
+            steps {
+                echo 'Testing...'
+                snykSecurity(
+                snykInstallation: 'snykdso',
+                snykTokenId: '56355cf5-fcf9-4a2a-91d6-50057a2e8038',
+                // place other parameters here
+                )
+            }
+            }
         stage('Trivy Scan') {
             steps {
                 script {
