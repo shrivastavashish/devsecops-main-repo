@@ -8,17 +8,21 @@ pipeline {
       }
     }
 
-stage('SonarQube - SAST') {
+    stage('SonarQube - SAST') {
       steps {
-         withSonarQubeEnv('SonarQube') {
-        sh "mvn sonar:sonar -Dsonar.projectKey=devsecops -Dsonar.host.url=http://secopsdev.eastus.cloudapp.azure.com:9000-Dsonar.login=sqp_a08661bcf6745a6a7ef3b541d51c65ad9c943ce7"
+        script {
+          def sonarProjectKey = 'devsecops'
+          def sonarHostUrl = 'http://secopsdev.eastus.cloudapp.azure.com:9000'
+          def sonarToken = 'sqp_a08661bcf6745a6a7ef3b541d51c65ad9c943ce7'
+
+          withSonarQubeEnv('SonarQube') {
+            sh "mvn sonar:sonar -Dsonar.projectKey=${sonarProjectKey} -Dsonar.host.url=${sonarHostUrl} -Dsonar.login=${sonarToken}"
+          }
+        }
       }
     }
 
-
-    
-
-stage('SCA Scan - Dependency-Check ') {
+    stage('SCA Scan - Dependency-Check') {
       steps {
         sh "mvn dependency-check:check"
       }
@@ -28,7 +32,7 @@ stage('SCA Scan - Dependency-Check ') {
         }
       }
     }
-    
+
     stage('Docker Build and Push') {
       steps {
         script {
