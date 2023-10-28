@@ -8,7 +8,23 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.jar', onlyIfSuccessful: true
             }
         }
+        stage('Check Git-Secrets') {
+            steps {
+                script {
+                    // Define the GitHub repository URL
+                    def githubRepoURL = 'https://github.com/shrivastavashish/devsecops-main-repo.git'
 
+                    // Remove existing trufflehog file if it exists
+                    sh "rm trufflehog || true"
+
+                    // Run Trufflehog container to scan GitHub repository
+                    sh """
+                        docker run --rm -v "$PWD:/pwd" \
+                        trufflesecurity/trufflehog:latest github --repo https://github.com/shrivastavashish/devsecops-main-repo.git"
+                    """
+                }
+            }
+        }
         stage('Static Analysis - SonarQube') {
             steps {
                 script {
