@@ -48,6 +48,12 @@ pipeline {
       }
     }
 
+  stage('Kubesec - Scan') {
+        steps {
+          sh "bash kubesec-scan.sh"
+        }
+          }
+
     stage('Kubernetes Deployment - DEV') {
       steps {
         withKubeConfig([credentialsId: 'kubeconfig']) {
