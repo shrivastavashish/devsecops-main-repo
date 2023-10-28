@@ -16,7 +16,7 @@ pipeline {
                     def sonarHostUrl = 'http://secopsdev.eastus.cloudapp.azure.com:9000'
                     def sonarToken = 'sqa_c5eb9ab4ccd48bd0e58f4c555e2709aba68fdcc6'
 
-                    withSonarQubeEnv('SonarQube') {
+                    withSonarQubeEnv('secdev') {
                         sh "mvn sonar:sonar -Dsonar.projectKey=${sonarProjectKey} -Dsonar.host.url=${sonarHostUrl} -Dsonar.login=${sonarToken}"
                     }
                 }
