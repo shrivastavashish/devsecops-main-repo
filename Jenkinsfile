@@ -19,9 +19,10 @@ pipeline {
 
                     // Run Trufflehog container to scan GitHub repository
                     sh """
-                        docker run --rm -v "$PWD:/pwd" \
-                        trufflesecurity/trufflehog:latest github --repo https://github.com/shrivastavashish/devsecops-main-repo.git"
-                    """
+                    docker run --rm -v \"$PWD:/pwd\" \
+                    trufflesecurity/trufflehog:latest github --repo https://github.com/shrivastavashish/devsecops-main-repo.git
+                """
+
                 }
             }
         }
