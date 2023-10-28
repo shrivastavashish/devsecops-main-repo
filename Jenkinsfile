@@ -12,9 +12,9 @@ pipeline {
         stage('Static Analysis - SonarQube') {
             steps {
                 script {
-                    def sonarProjectKey = 'devsecops'
+                    def sonarProjectKey = 'secdev'
                     def sonarHostUrl = 'http://secopsdev.eastus.cloudapp.azure.com:9000'
-                    def sonarToken = 'sqp_a08661bcf6745a6a7ef3b541d51c65ad9c943ce7'
+                    def sonarToken = 'sqa_c5eb9ab4ccd48bd0e58f4c555e2709aba68fdcc6'
 
                     withSonarQubeEnv('SonarQube') {
                         sh "mvn sonar:sonar -Dsonar.projectKey=${sonarProjectKey} -Dsonar.host.url=${sonarHostUrl} -Dsonar.login=${sonarToken}"
