@@ -97,18 +97,18 @@ environment {
                 }
             }
         }
-    //     stage('Kubernetes - Vulnerability Scan') {
-    //   steps {
-    //     parallel(
-    //       "Kubesec Scan": {
-    //         sh "bash kubesec-scan.sh"
-    //       },
-    //       "Trivy Scan": {
-    //         sh "bash trivy-kuber-scan.sh"
-    //       }
-    //     )
-    //   }
-    // }
+        stage('Kubernetes - Vulnerability Scan') {
+      steps {
+        parallel(
+          "Kubesec Scan": {
+            sh "bash kubesec-scan.sh"
+          },
+          "Trivy Scan": {
+            sh "bash trivy-kuber-scan.sh"
+          }
+        )
+      }
+    }
 
         // stage('Kubernetes- CIS Benchmark') {
         //     steps {
