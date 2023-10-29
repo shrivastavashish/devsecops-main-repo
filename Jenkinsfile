@@ -26,7 +26,8 @@ environment {
                     docker run --rm -v \"$PWD:/pwd\" \
                     trufflesecurity/trufflehog:latest github --repo https://github.com/shrivastavashish/devsecops-main-repo.git
                 """
-
+                // Copy the Trufflehog report to the specified path
+                            sh "cp trufflehog_report.json /root/reports/truffle/"
                 }
             }
         }
