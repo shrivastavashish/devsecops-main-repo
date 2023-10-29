@@ -2,7 +2,7 @@
 
 
 #echo $imageName #getting Image name from env variable
-ImageName=openjdk:8-jdk-alpine
+ImageName=openjdk:22
 
 docker run --rm -v $WORKSPACE:/root/.cache/ aquasec/trivy:0.46.0 -q image --exit-code 0 --severity LOW,MEDIUM,HIGH --light $imageName
 docker run --rm -v $WORKSPACE:/root/.cache/ aquasec/trivy:0.46.0 -q image --exit-code 1 --severity CRITICAL --light $imageName
