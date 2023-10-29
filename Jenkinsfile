@@ -77,14 +77,14 @@ environment {
 //         }
 //     }
 // }
-        // stage('Trivy Scan') {
-        //             steps {
-        //                 script {
-        //                     // Run Trivy for vulnerability scanning
-        //                     sh "bash trivy-scan.sh"
-        //                 } 
-        //             }
-        //         }
+        stage('Trivy Scan') {
+                    steps {
+                        script {
+                            // Run Trivy for vulnerability scanning
+                            sh "bash trivy-scan.sh"
+                        } 
+                    }
+                }
         stage('Docker Build and Push') {
             steps {
                 script {
