@@ -61,21 +61,21 @@ environment {
             }
         }
 
-        stage('Snyk Code Scan') {
-            steps {
-                script {
-            // Set the SNYK_TOKEN environment variable
-            withEnv(["SNYK_TOKEN=56355cf5-fcf9-4a2a-91d6-50057a2e8038"]) {
-                echo 'Testing...'
-                snykSecurity(
-                    snykInstallation: 'snyk',
-                    snykTokenId: 'snyk',
-                    // Place other parameters here as needed
-                )
-            }
-        }
-    }
-}
+//         stage('Snyk Code Scan') {
+//             steps {
+//                 script {
+//             // Set the SNYK_TOKEN environment variable
+//             withEnv(["SNYK_TOKEN=56355cf5-fcf9-4a2a-91d6-50057a2e8038"]) {
+//                 echo 'Testing...'
+//                 snykSecurity(
+//                     snykInstallation: 'snyk',
+//                     snykTokenId: 'snyk',
+//                     // Place other parameters here as needed
+//                 )
+//             }
+//         }
+//     }
+// }
         // stage('Trivy Scan') {
         //             steps {
         //                 script {
