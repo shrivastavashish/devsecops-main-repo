@@ -76,7 +76,7 @@ pipeline {
                 }
             }
         }
-        stage('Vulnerability Scan - Kubernetes') {
+        stage('Kubernetes - Vulnerability Scan') {
       steps {
         parallel(
           "Kubesec Scan": {
