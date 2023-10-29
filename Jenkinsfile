@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+environment {
+    imageName = "dsocouncil/node-service:${GIT_COMMIT}"
+  }
+
     stages {
         stage('Build Artifact') {
             steps {
