@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-# echo $imageName #getting Image name from env variable
+# echo $imageName 
 # #ImageName=openjdk:22
 
 # docker run --rm -v $WORKSPACE:/root/.cache/ aquasec/trivy:0.46.0 -q image --exit-code 0 --severity HIGH --light $imageName
