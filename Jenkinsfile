@@ -24,7 +24,7 @@ environment {
                     // Run Trufflehog container to scan GitHub repository
                     sh """
                     docker run --rm -v \"$PWD:/pwd\" \
-                    trufflesecurity/trufflehog:latest github --repo https://github.com/shrivastavashish/devsecops-main-repo.git -o /pwd/trufflehog_report.json
+                    trufflesecurity/trufflehog:latest github --repo https://github.com/shrivastavashish/devsecops-main-repo.git > trufflehog_report.json
                 """
                 // Copy the Trufflehog report to the specified path
                             sh "sudo cp trufflehog_report.json /root/reports/truffle/"
