@@ -1,6 +1,6 @@
 !/bin/bash
 
-dockerImageName=openjdk:8-jdk-alpine
+dockerImageName=openjdk:22
 echo $dockerImageName
 
 docker run --rm -v $WORKSPACE:/root/.cache/ aquasec/trivy:0.46.0 -q image --exit-code 0 --severity HIGH --light $dockerImageName
