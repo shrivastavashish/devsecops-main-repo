@@ -110,25 +110,25 @@ environment {
       }
     }
 
-        // stage('Kubernetes- CIS Benchmark') {
-        //     steps {
-        //         script {
+        stage('Kubernetes- CIS Benchmark') {
+            steps {
+                script {
 
-        //         parallel(
-        //             "Master": {
-        //             sh "bash cis-master.sh"
-        //             },
-        //             "Etcd": {
-        //             sh "bash cis-etcd.sh"
-        //             },
-        //             "Kubelet": {
-        //             sh "bash cis-kubelet.sh"
-        //             }
-        //         )
+                parallel(
+                    "Master": {
+                    sh "bash cis-master.sh"
+                    },
+                    "Etcd": {
+                    sh "bash cis-etcd.sh"
+                    },
+                    "Kubelet": {
+                    sh "bash cis-kubelet.sh"
+                    }
+                )
 
-        //         }
-        //     }
-        //     }    
+                }
+            }
+            }    
         stage('Kubernetes Deployment - DEV') {
             steps {
                 withKubeConfig([credentialsId: 'kubeconfig']) {
