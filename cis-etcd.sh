@@ -9,3 +9,4 @@ if [[ "$total_fail" -ne 0 ]];
                 exit 1;
         else
                 echo "CIS Benchmark Passed for ETCD - 2.2"
+fi;

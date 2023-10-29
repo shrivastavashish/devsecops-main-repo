@@ -109,7 +109,7 @@ environment {
     //   }
     // }
 
-        stage('K8S CIS Benchmark') {
+        stage('Kubernetes- CIS Benchmark') {
             steps {
                 script {
 
