@@ -29,7 +29,7 @@ environment {
                 // Copy the Trufflehog report to the specified path
                             sh "sudo chown jenkins:jenkins /root/reports/truffle/"
                             sh "sudo chmod 755 /root/reports/truffle/"
-                            sh "cp trufflehog_report.json /root/reports/truffle/"
+                            sh "sudo cp trufflehog_report.json /root/reports/truffle/"
                 }
             }
         }
