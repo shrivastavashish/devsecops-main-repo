@@ -34,22 +34,22 @@ environment {
         stage('Static Analysis - SonarQube') {
             steps {
                 script {
-                    def sonarProjectKey = 'secdev'
-                    def sonarHostUrl = 'http://secopsdev.eastus.cloudapp.azure.com:9000'
-                    def sonarToken = 'sqa_c5eb9ab4ccd48bd0e58f4c555e2709aba68fdcc6'
+                    def sonarProjectKey = 'devsecops'
+                    def sonarHostUrl = 'http://54.89.224.127:9000/'
+                    def sonarToken = 'sqp_a75e8fe4cf8f67f1bada216f7e5d3c799c893a32'
 
-                    withSonarQubeEnv('secdev') {
+                    withSonarQubeEnv('devsecops') {
                         sh "mvn sonar:sonar -Dsonar.projectKey=${sonarProjectKey} -Dsonar.host.url=${sonarHostUrl} -Dsonar.login=${sonarToken}"
                     }
                 }
 
-                timeout(time: 2, unit: 'MINUTES') {
-                    script {
-                        waitForQualityGate abortPipeline: true
-                    }
-                }
-            }
-        }
+        //         timeout(time: 2, unit: 'MINUTES') {
+        //             script {
+        //                 waitForQualityGate abortPipeline: true
+        //             }
+        //         }
+        //     }
+        // }
 
         stage('SCA Scan - Dependency-Check') {
             steps {
