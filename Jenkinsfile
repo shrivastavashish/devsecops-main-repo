@@ -49,7 +49,7 @@ environment {
             //         }
             //     }
             // }
-        }
+        //}
 
         stage('SCA Scan - Dependency-Check') {
             steps {
