@@ -23,11 +23,11 @@ environment {
 
                     // Run Trufflehog container to scan GitHub repository
                     sh """
-                    docker run --rm -v \"$PWD:/pwd\" \
+                    sudo docker run --rm -v \"$PWD:/pwd\" \
                     trufflesecurity/trufflehog:latest github --repo https://github.com/shrivastavashish/devsecops-main-repo.git --json > trufflehog_report.json
                 """
                 // copy file to server 
-                    sh "sudo cp trufflehog_report.json /root/reports/truffle/"
+                    sh "sudo cp trufflehog_report.json /root/reports/trufflehog/"
                 }
             }
         }
