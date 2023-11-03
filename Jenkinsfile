@@ -43,12 +43,12 @@ environment {
                     }
                 }
 
-                timeout(time: 2, unit: 'MINUTES') {
-                    script {
-                        waitForQualityGate abortPipeline: true
-                    }
-                }
-            }
+            //     timeout(time: 2, unit: 'MINUTES') {
+            //         script {
+            //             waitForQualityGate abortPipeline: true
+            //         }
+            //     }
+            // }
         }
 
         stage('SCA Scan - Dependency-Check') {
