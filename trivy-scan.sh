@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 dockerImageName=openjdk:22
 echo $dockerImageName
